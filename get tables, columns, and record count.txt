@@ -1,0 +1,8 @@
+select 
+	c.TABLE_NAME,
+	c.COLUMN_NAME,
+	s.row_count
+FROM INFORMATION_SCHEMA.COLUMNS c
+	JOIN sys.tables t on t.name = c.TABLE_NAME
+	JOIN   sys.dm_db_partition_stats s ON t.OBJECT_ID = s.OBJECT_ID
+
